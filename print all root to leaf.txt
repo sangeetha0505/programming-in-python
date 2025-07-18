@@ -1,0 +1,18 @@
+
+def print_all_paths(root):
+    paths = []
+
+    def dfs(node, path):
+        if not node:
+            return
+        path.append(str(node.val))
+        if not node.left and not node.right:
+            paths.append("->".join(path))
+        else:
+            dfs(node.left, path)
+            dfs(node.right, path)
+        path.pop()
+
+    dfs(root, [])
+    return paths
+
